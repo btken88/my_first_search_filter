@@ -1,7 +1,16 @@
+const searchParam = new URLSearchParams(window.location.search)
+const name = searchParam.get('name')
+
+const baseURL = "http://localhost:3000";
+let dogsURL = `${baseURL}/dogs`;
+if (name) {
+  dogsURL = `${dogsURL}?name=${name}`
+}
+
+console.log(name)
+
 console.log("JavaScript loaded");
 
-baseURL = "http://localhost:3000";
-dogsURL = `${baseURL}/dogs`;
 
 const dogsSection = document.querySelector("section");
 
@@ -15,10 +24,10 @@ function displayDogs(dogs) {
 
 function showDog(dog) {
   const dogCard = document.createElement("div");
-  
+
   const name = document.createElement("h2");
-  name.textContent = dog.name; 
-  
+  name.textContent = dog.name;
+
   const age = document.createElement("p");
   age.textContent = `${dog.age} years old`;
 
